@@ -16,4 +16,7 @@
 #
 
 class Store < ApplicationRecord
+  belongs_to :user
+  has_many :favorites
+  has_many :favorited_user, throuth: :favorites, source: :user
 end
