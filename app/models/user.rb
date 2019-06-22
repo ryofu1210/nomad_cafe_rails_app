@@ -34,6 +34,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
 
+  mount_uploader :image, UserImageUploader
   has_many :stores, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_stores, through: :favorites, source: :store
