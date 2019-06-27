@@ -1,0 +1,36 @@
+div{style="border-color: #ff0000; border-style: solid;"}
+  div
+    = store.name
+  div
+    span 長時間居やすさ
+    = store.long_stay
+  div
+    span コンセント
+    = store.consent
+  div
+    span Wifi
+    = store.wifi
+  div
+    span お気に入り
+    = store.favorites.count
+  div
+    - if current_user && current_user.already_favorite?(store)
+      = link_to 'お気に入り削除', store_favorite_path(store_id: store.id, id: current_user.id), method: :delete
+    - else
+      = link_to 'お気に入り登録', store_favorites_path(store_id: store.id), method: :post
+  - if current_user == store.user
+    div
+      = link_to '編集', edit_store_path(store)
+      = link_to '削除', store_path(store), method: :delete
+  div
+    = link_to '詳細', store_path(store)
+  div
+    = link_to user_path(store.user)
+      span 投稿ユーザ
+      = store.user.nickname
+  div
+    p ステータス
+    = store.status
+  div
+    span 更新日時
+    = store.updated_at

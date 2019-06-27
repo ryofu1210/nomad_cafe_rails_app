@@ -1,0 +1,10 @@
+div.body
+  = form_with url: root_path, method: :get, local: true do |f|
+    = f.text_field :term, value: @parameters[:term]
+    = f.submit
+
+  = link_to 'すべて', stores_path
+  = link_to 'お気に入り', stores_path(type: 'favorite_stores')
+
+  = render partial: 'shared/store', collection: @stores, as: :store
+  = paginate @stores

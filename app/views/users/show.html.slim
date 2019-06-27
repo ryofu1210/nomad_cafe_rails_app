@@ -1,0 +1,6 @@
+= @user.nickname
+= image_tag @user.image
+div
+  p 投稿カフェ一覧
+  = render partial: 'shared/store', collection: @stores, as: :store
+  = paginate @stores
