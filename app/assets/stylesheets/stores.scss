@@ -1,3 +1,60 @@
 // Place all the styles related to the Stores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.fa-white{
+  color: black;
+}
+
+.fa-pink{
+  color: pink;
+}
+
+.fa-black{
+  color:black;
+}
+.CardBox{
+  color:black;
+
+  a{
+    display:block;
+    width:100%;
+    height:100%;
+    
+    a:hover{
+      opacity:0.9;
+    }
+
+    .Card-Img{
+      width:100%;
+    }
+  }
+
+  .Card-Body{
+    padding:10px;
+    font-size:12px;
+
+    .Card-Title{
+      font-size:15px;
+      padding-bottom:5px;
+    }
+
+    .Card-Text{
+      padding-bottom:2px;
+    }
+
+    .Card-Favorite{
+    
+    }
+  
+    .Card-User{
+      a{
+        
+      }
+    }
+  
+  }
+
+}

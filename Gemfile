@@ -41,6 +41,9 @@ gem 'rmagick'
 gem 'slim-rails'
 gem 'html2slim'
 gem 'kaminari'
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+gem "font-awesome-rails"
 
 
 group :development, :test do
