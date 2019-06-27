@@ -1,0 +1,17 @@
+div
+  = @store.name
+div
+  span 長時間居やすさ
+  = @store.long_stay
+div
+  span コンセント
+  = @store.consent
+div
+  span Wifi
+  = @store.wifi
+div
+  span お気に入り
+  = @store.favorites.count
+div
+  span 写真
+  = image_tag @store.image

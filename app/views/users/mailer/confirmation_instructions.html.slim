@@ -1,0 +1,6 @@
+= @email
+
+p この度は、ノマドカフェアプリへ仮登録いただき、ありがとうございます。
+
+p 会員登録の手続きはまだ完了していません。お手数ですが、下記URLより、本登録をお願いいたします。
+= link_to confirmation_url(@resource, confirmation_token: @token),confirmation_url(@resource, confirmation_token: @token)

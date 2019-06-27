@@ -1,0 +1,31 @@
+div.body
+  = form_with model: @store, local: true do |f|
+    div
+      = f.label :name, "店舗名"
+      = f.text_field :name
+    div
+      = f.label :long_stay, "長居しやすさ度"
+      = f.number_field :long_stay
+    div
+      = f.label :consent, "コンセント有無"
+      = f.radio_button :consent, :consent_ari
+      = f.label "あり"
+      = f.radio_button :consent, :consent_nashi
+      = f.label "なし"
+    div
+      = f.label :wifi, "Wifi有無"
+      = f.radio_button :wifi, :wifi_ari
+      = f.label "あり"
+      = f.radio_button :wifi, :wifi_nashi
+      = f.label "なし"
+    div
+      = f.label :wifi_description, "Wifi詳細"
+      = f.text_field :wifi_description
+    div
+      = f.label :comment, "コメント"
+      = f.text_field :comment
+    div
+      = f.label :image, "写真"
+      = f.file_field :image
+    div
+      = f.submit

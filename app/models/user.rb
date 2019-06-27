@@ -44,4 +44,8 @@ class User < ApplicationRecord
   validates :nickname, length: {maximum: 50}
   validates :profile, length: {maximum: 200}
   
+  def already_favorite?(store)
+    self.favorites.exists?(store_id: store.id)
+  end
+
 end
