@@ -38,7 +38,7 @@ class Store < ApplicationRecord
   enum consent: { consent_ari: true, consent_nashi: false}
   enum wifi: { wifi_ari: true, wifi_nashi: false}
 
-  def self.search(search)
+  def self.search(search = nil)
     return Store.active.sorted unless search
     Store.where("name like ? OR comment like ?", "%#{search}%", "%#{search}%").active.sorted
   end

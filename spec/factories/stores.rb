@@ -2,8 +2,8 @@ FactoryBot.define do
   factory :store do
     name {"name"}
     long_stay {1}
-    consent {true}
-    wifi {true}
+    consent {:consent_ari}
+    wifi {:wifi_ari}
     wifi_description {"Wi2/Wi2_club"}
     comment {"コメントコメントコメントコメントコメントコメント"}
     association :user

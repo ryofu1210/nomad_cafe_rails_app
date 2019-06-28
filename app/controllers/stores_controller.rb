@@ -1,6 +1,7 @@
 class StoresController < ApplicationController
   skip_before_action :authenticate_user!, only:%w(index show)
   before_action :set_parameter, only:%w(index)
+  before_action :correct_user, only:%w(edit update destroy)
   ITEMS_PER_PAGE = 3
 
   def index
@@ -70,6 +71,14 @@ class StoresController < ApplicationController
       :comment,
       :image
     )
+  end
+
+  def correct_user
+    @store = Store.find_by(id:params[:id])
+    unless @store.user == current_user
+      flash[:alert] = "権限がありません"
+      redirect_to root_path
+    end
   end
 
 end
