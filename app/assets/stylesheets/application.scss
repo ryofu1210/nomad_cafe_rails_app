@@ -37,3 +37,19 @@ tr, th, td {
     padding: 0;
     border: 0;
 }
+
+
+.flash{
+  text-align: center;
+  color:white;
+  font-size:20px;
+
+  .notice{
+    padding:10px;
+
+  }
+  .alert{
+    padding:10px;
+
+  }
+}

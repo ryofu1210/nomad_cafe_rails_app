@@ -1,17 +1,18 @@
-h2 ログイン
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email, "メールアドレス"
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password, "パスワード"
-    br
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me, "ログイン情報を記録する"
-  .actions
-    = f.submit "ログイン"
-= render "users/shared/links"
+.container
+  .row.mt-5
+    .col-6.offset-3
+      h2.Title.mb-3 ログイン
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-group.row
+          = f.label :email, "メールアドレス", class: "col-form-label col-4"
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-8"
+        .form-group.row
+          = f.label :password, "パスワード", class: "col-form-label col-4"
+          = f.password_field :password, autocomplete: "current-password", class: "form-control col-8"
+        - if devise_mapping.rememberable?
+          .custom-control.custom-checkbox.mb-3
+            = f.check_box :remember_me, class: "custom-control-input"
+            = f.label :remember_me, "ログイン情報を記録する", class:"custom-control-label"
+        .form-group
+          = f.button "ログイン", class: "btn btn-primary"
+      = render "users/shared/links"

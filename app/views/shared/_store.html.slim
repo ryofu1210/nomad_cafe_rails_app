@@ -2,42 +2,36 @@
   .CardBox.shadow
     = link_to store_path(store) do
       - if store.image.present?
-        = image_tag store.image, {class:"Card-Img"}
+        = image_tag store.image.middle, {class:"Card-Img"}
       - else
-        img src="assets/store_image.jpg" class="Card-Img"
+        img src="/assets/default_image_store.png" class="Card-Img"
     .Card-Body
       h4.Card-Title
-        = store.name
-      p.Card-Text
-        | 長時間居やすさ
-        = store.long_stay
-      p.Card-Text
-        | コンセント
-        = store.consent
-      p.Card-Text
-        | Wifi
-        = store.wifi
-      p.Card-Text 
-        | お気に入り
-        = store.favorites.count
+        = link_to store.name, store_path(store)
+      .Card-Text
+        p.Card-Text-Title 長時間居やすさ
+        - store.long_stay.times
+          = fa_icon "star", class: "fa-yellow"
+      .Card-Text
+        p.Card-Text-Title コンセント
+        p= store.consent_i18n
+      .Card-Text
+        p.Card-Text-Title Wifi
+        p= store.wifi_i18n
       .Card-Favorite
         - if current_user && current_user.already_favorite?(store)
-          = link_to fa_icon("heart"), store_favorite_path(store_id: store.id, id: current_user.id), {method: :delete, class:"fa-pink d-inline"}
+          = link_to fa_icon("heart"), store_favorite_path(store_id: store.id, id: current_user.id), {method: :delete, class:"fa-red d-inline"}
         - else
           = link_to fa_icon("heart"), store_favorites_path(store_id: store.id), {method: :post, class:"fa-fw fa-white d-inline"}
-        span= store.favorites.count
+        span.Card-Favorite-Message= favorite_count_message(store)
 
       .Card-User
-        = link_to user_path(store.user), {class: "fa-black"} do
-          = fa_icon "user"
+        = link_to user_path(store.user) do
+          = fa_icon "user", class:"fa-black"
           | 投稿ユーザ
           = store.user.nickname
 
-
+      .Card-Operation
         - if current_user == store.user
-          div
-            = link_to '編集', edit_store_path(store)
-            = link_to '削除', store_path(store), method: :delete
-          div
-            = link_to '詳細', store_path(store)
-
+          = link_to '編集', edit_store_path(store)
+          = link_to '削除', store_path(store), method: :delete

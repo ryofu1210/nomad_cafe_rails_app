@@ -1,6 +1,27 @@
-= @user.nickname
-= image_tag @user.image
-div
-  p 投稿カフェ一覧
-  = render partial: 'shared/store', collection: @stores, as: :store
-  = paginate @stores
+.container
+  .row.mt-5
+    h1.Title ユーザプロフィール
+  .row.User
+    .col-2
+      - if @user.image.present?
+        = image_tag @user.image
+      - else
+        img src="/assets/default-user-image.png" class="img-thumbnail"
+    .col-10
+      .User-Name
+        -if @user.nickname.present?
+          = @user.nickname
+        -else
+          = "No Name"
+      .User-Profile
+        = @user.profile
+      .User-Edit
+        = link_to "編集", edit_user_registration_path, class:"align-bottom" 
+  .row.mt-5
+    h2.Title 投稿したカフェ一覧
+  .row
+    = render partial: 'shared/store', collection: @stores, as: :store
+  .row.mt-5.mb-5
+    .offset-4
+    .col-4
+      = paginate @stores

@@ -1,17 +1,43 @@
-div
-  = @store.name
-div
-  span 長時間居やすさ
-  = @store.long_stay
-div
-  span コンセント
-  = @store.consent
-div
-  span Wifi
-  = @store.wifi
-div
-  span お気に入り
-  = @store.favorites.count
-div
-  span 写真
-  = image_tag @store.image
+.container
+  .row
+    h1.Title.mt-5 カフェ詳細
+  .row
+    .col-5
+      - if @store.image.present?
+        = image_tag @store.image.middle, class: "img-fluid"
+      - else
+        img src="/assets/default_image_store.png" class="img-fluid"
+    .col-7
+      .row.mb-1
+        h3.col-4.Sub-Title 店舗名
+        p.col-8
+          = @store.name
+      .row.mb-1
+        h4.col-4.Sub-Title 長時間居やすさ
+        p.col-8
+          = @store.long_stay
+      .row.mb-1
+        h4.col-4.Sub-Title コンセント
+        p.col-8
+          = @store.consent_i18n
+      .row.mb-1
+        h4.col-4.Sub-Title Wifi
+        p.col-8
+          = @store.wifi_i18n
+      .row.mb-1
+        h4.col-4.Sub-Title Wifi情報詳細
+        p.col-8
+          = @store.wifi_description
+      .row.mb-1
+        h4.col-4.Sub-Title 投稿者
+        p.col-8
+          = link_to user_path(@store.user) do
+            = @store.user.nickname
+      .row.mb-1
+        h4.col-4.Sub-Title 投稿者コメント
+        p.col-8
+          = @store.comment
+      .row.mb-1
+        h4.col-4.Sub-Title お気に入り登録者数
+        p.col-8
+          = @store.favorites.count

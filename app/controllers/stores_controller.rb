@@ -4,7 +4,7 @@ class StoresController < ApplicationController
   ITEMS_PER_PAGE = 3
 
   def index
-    stores = Store.search(@parameters[:term])
+    stores = Store.search(@parameters[:search])
     stores = stores.favorite(current_user) if @parameters[:type] == "favorite_stores"
     @stores = stores.page(@parameters[:page]).per(ITEMS_PER_PAGE)
   end
@@ -57,7 +57,7 @@ class StoresController < ApplicationController
 
   private
   def set_parameter
-    @parameters = params.slice(:term, :page, :type).reject{|_, value| value.blank?}
+    @parameters = params.slice(:search, :page, :type).reject{|_, value| value.blank?}
   end
 
   def store_params

@@ -1,0 +1,10 @@
+ja:
+  enums:
+    store:
+      consent:
+        consent_ari: "あり"
+        consent_nashi: "なし"
+      wifi:
+        wifi_ari: "あり"
+        wifi_nashi: "なし"
+      

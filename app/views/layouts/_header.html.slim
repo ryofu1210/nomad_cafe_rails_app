@@ -7,19 +7,20 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   #navbarText.collapse.navbar-collapse
     ul.navbar-nav
       li.nav-item.active
-        = link_to root_path, {class: "nav-link"}
-          | トップ
-          span.sr-only (現位置)
+        = link_to "トップ",root_path, {class: "nav-link active"}
+          / span.sr-only (現位置)
       li.nav-item
-        = link_to '投稿', new_store_path, {class: "nav-link"}
+        = link_to '投稿', new_store_path, {class: "nav-link active"}
     ul.navbar-nav.ml-auto
       - if user_signed_in?
         li.nav-item
-          = link_to 'マイページ', user_path(current_user), {class: "nav-link btn btn-primary"}
+          = link_to 'マイページ', user_path(current_user), {class: "nav-link btn btn-primary btn-sm"}
+        span.mr-2
         li.nav-item  
-          = link_to 'ログアウト', destroy_user_session_path, {method: :delete, class: "nav-link"}
+          = link_to 'ログアウト', destroy_user_session_path, {method: :delete, class: "nav-link btn btn-danger btn-sm"}
       - else
         li.nav-item
-          = link_to '新規登録', new_user_registration_path, {class: "nav-link btn btn-primary"}
+          = link_to '新規登録', new_user_registration_path, {class: "nav-link btn btn-primary btn-sm"}
+        span.mr-2
         li.nav-item
-          = link_to 'ログイン', new_user_session_path, {class: "nav-link btn btn-defualt"}
+          = link_to 'ログイン', new_user_session_path, {class: "nav-link btn btn-success btn-sm"}
