@@ -1,10 +1,24 @@
-div.body
-  = form_with url: root_path, method: :get, local: true do |f|
-    = f.text_field :term, value: @parameters[:term]
-    = f.submit
+.container
+  .row.mt-5.mb-5.justify-content-between
+    .col-4
+      - if user_signed_in?
+        = link_to 'すべて', stores_path(search: @parameters[:search]), class: "btn #{@parameters[:type].nil? ? 'btn-primary': 'btn-secondary'}"
+        span.mr-1
+        = link_to 'お気に入り', stores_path(type:"favorite_stores",search: @parameters[:search]), class: "btn #{@parameters[:type] == 'favorite_stores' ? 'btn-primary' : 'btn-secondary'}"
+    .col-4
+      = form_with url: stores_path, method: :get, local: true do |f|
+        .input-group.mb-3
+          = f.hidden_field :type, value: @parameters[:type]
+          = f.text_field :search, value: @parameters[:search], class:"form-control"
+          .input-group-append
+            = f.button "検索", class:"btn btn-secondary"
 
-  = link_to 'すべて', stores_path
-  = link_to 'お気に入り', stores_path(type: 'favorite_stores')
+  .row
+    h2.Title カフェ一覧
+  .row
+    = render partial: 'shared/store', collection: @stores, as: :store
+  .row.mt-5.mb-5
+    .offset-4
+    .col-4
+      = paginate @stores
 
-  = render partial: 'shared/store', collection: @stores, as: :store
-  = paginate @stores

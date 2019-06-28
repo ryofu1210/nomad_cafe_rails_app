@@ -1,3 +1,32 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.title{
+  text-align: center;
+  padding-bottom:20px;
+  font-size:30px;
+}
+
+// .User{
+//   .User-Img{
+//     width:150px;
+//     margin-right:20px;
+//     img{
+//       width:100%;
+//     }
+//   }
+
+//   .User-Name{
+
+//   }
+// }
+
+.User-Name{
+  margin:10px 0 10px 0;
+  font-size:20px;
+  font-weight: bold;
+}
+
+.User-Profile{
+}

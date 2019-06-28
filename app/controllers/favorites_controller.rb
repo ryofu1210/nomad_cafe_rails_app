@@ -13,6 +13,7 @@ class FavoritesController < ApplicationController
   def destroy
     @favorite = Favorite.find_by(store_id: params[:store_id], user_id: params[:id])
     @favorite.destroy
+    flash[:notice] = "お気に入りから外しました。"
     redirect_back(fallback_location: root_path)
   end
 

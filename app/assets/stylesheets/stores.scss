@@ -1,3 +1,109 @@
 // Place all the styles related to the Stores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.fa-white{
+  color: black;
+}
+
+.fa-red{
+  color: red;
+}
+
+.fa-black{
+  color:black;
+}
+
+.fa-yellow{
+  color:goldenrod;
+}
+.CardBox{
+  color:black;
+  height:369px;
+  position: relative;
+
+  a{
+    display:block;
+    width:100%;
+    
+    a:hover{
+      opacity:0.9;
+    }
+
+    .Card-Img{
+      width:100%;
+    }
+  }
+
+  .Card-Body{
+    padding:10px;
+    font-size:12px;
+
+    .Card-Title{
+      font-size:15px;
+      padding-bottom:5px;
+    }
+
+    .Card-Text{
+      display:flex;
+      padding-bottom:3px;
+
+      .Card-Text-Title{
+        width:100px;
+      }
+    }
+
+    .Card-Favorite{
+      display:flex-inline;
+      position: absolute;
+      top:10px;
+      left:10px;
+      justify-content: start;
+      align-items: center;
+
+      i{
+        font-size:20px;
+        padding: 0 5px 5px 0;
+      }
+      .Card-Favorite-Message{
+        font-size:10px;
+      }
+    }
+  
+    .Card-User{
+      display:inline;
+      text-align: right;
+
+      i{
+        font-size:15px;
+        padding: 0 5px 5px 0;
+      }
+      a{
+      }
+    }
+    .Card-Operation{
+      display:flex;
+      justify-content: end;
+      a{
+        display:inline;
+        padding: 0 5px;
+        text-align: right;
+      }
+    }
+  
+  }
+
+}
+
+.Title{
+  font-size:20px;
+  margin:0 0 20px 20px;
+  border-bottom:1px solid black;
+  font-weight: bold;
+}
+
+.Sub-Title{
+  font-size:15px;
+}

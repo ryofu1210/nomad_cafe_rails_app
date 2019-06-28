@@ -8,11 +8,13 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render 'layouts/header'
-    - if notice
-      div.notice
-        = flash[:notice]
-    - elsif alert
-      div.alert
-        = flash[:alert]
+    - if notice || alert
+      .container-fuild.flash.time-limit.fixed-top
+        - if notice
+          .bg-success.notice
+            = flash[:notice]
+        - elsif alert
+          .bg-success.alert
+            = flash[:alert]
     = yield
-    = debug(params) if Rails.env.development? 
+    / = debug(params) if Rails.env.development? 
