@@ -3,34 +3,34 @@
     .col-8.offset-2
       = form_with model: @store, local: true do |f|
         .form-group.row
-          = f.label :name, "TENPOMEI", class: "col-form-label col-3"
-          = f.text_field :name,placeholder:"店舗名を入力してください。", class: "form-control col-9"
+          = f.label :name, "TENPOMEI", class: "col-form-label col-3", for: "store_name"
+          = f.text_field :name,placeholder:"店舗名を入力してください。", class: "form-control col-9",id: "store_name"
         .form-group.row
-          = f.label :long_stay, "長居しやすさ度", class: "col-form-label col-3"
+          = f.label :long_stay, "長居しやすさ度", class: "col-form-label col-3",for: "store_long_stay"
           / = f.number_field :long_stay, class: "form-control col-9"
-          = f.select :long_stay, [1,2,3,4,5], {},class: "custom-select col-3"
+          = f.select :long_stay, [1,2,3,4,5], {},class: "custom-select col-3",id: "store_long_stay"
         .form-group.row
-          = f.label :consent, "コンセント有無", class: "col-form-label col-3"
+          = f.label :consent, "コンセント有無", class: "col-form-label col-3",for: "store_consent"
           / = f.radio_button :consent, :consent_ari
           / = f.label "あり"
           / = f.radio_button :consent, :consent_nashi
           / = f.label "なし"
-          = f.select :consent, [["なし",:consent_nashi],["あり",:consent_ari]], {},class: "custom-select col-3"
+          = f.select :consent, [["なし",:consent_nashi],["あり",:consent_ari]], {},class: "custom-select col-3",id: "store_consent"
         .form-group.row
-          = f.label :wifi, "Wifi有無", class: "col-form-label col-3"
+          = f.label :wifi, "Wifi有無", class: "col-form-label col-3",for: "store_wifi"
           / = f.radio_button :wifi, :wifi_ari
           / = f.label "あり"
           / = f.radio_button :wifi, :wifi_nashi
           / = f.label "なし"
-          = f.select :wifi, [["なし",:wifi_nashi],["あり",:wifi_ari]], {},class: "custom-select col-3"
+          = f.select :wifi, [["なし",:wifi_nashi],["あり",:wifi_ari]], {},class: "custom-select col-3",id: "store_wifi"
         .form-group.row
-          = f.label :wifi_description, "Wifi詳細", class: "col-form-label col-3"
-          = f.text_area :wifi_description,rows:3,placeholder:"wi2/wi2_club", class: "form-control col-9"
+          = f.label :wifi_description, "Wifi詳細", class: "col-form-label col-3",for: "store_wifi_description"
+          = f.text_area :wifi_description,rows:3,placeholder:"wi2/wi2_club", class: "form-control col-9",id: "store_wifi_description"
         .form-group.row
-          = f.label :comment, "コメント", class: "col-form-label col-3"
-          = f.text_area :comment,rows:3, class: "form-control col-9"
+          = f.label :comment, "コメント", class: "col-form-label col-3",for: "store_comment"
+          = f.text_area :comment,rows:3, class: "form-control col-9",id: "store_comment"
         .form-group.row
-          = f.label :image, "写真を選択", class: "col-form-label col-3"
-          = f.file_field :image, class: "fomr-control-file col-9"
+          = f.label :image, "写真を選択", class: "col-form-label col-3",for: "store_image"
+          = f.file_field :image, class: "fomr-control-file col-9",id: "store_image"
         .form-group.row
           = f.button "保存", class: "btn btn-primary"
