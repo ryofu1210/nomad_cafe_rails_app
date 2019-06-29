@@ -50,3 +50,4 @@ node_modules/
 # 追加
 # テスト実行でアップロードしたファイルを除外
 /spec/test_uploads
+public/uploads

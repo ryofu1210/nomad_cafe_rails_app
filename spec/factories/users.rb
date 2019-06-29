@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :user do
-    nickname {"testtest"}
+    # nickname {"testtest"}
+    sequence(:nickname) {|n| "NICKNAME#{n}"}
     profile {"プロフィールプロフィールプロフィール"}
     sequence(:email) {|n| "rspec_test#{n}@example.com"}
     password {"password"}

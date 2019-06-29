@@ -62,9 +62,10 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # controllerテストでDeviseヘルパーを使用する
+  # controllerテスト、systemテストでDeviseヘルパーを使用する
   config.include Devise::Test::ControllerHelpers, type: :controller
-  
+  config.include Devise::Test::IntegrationHelpers, type: :system
+
   # systemテストにおいて、jsありの場合はヘッドレスChrome、
   # jsなしの場合はrack_testを用いてテストする
   config.before(:each) do |example|

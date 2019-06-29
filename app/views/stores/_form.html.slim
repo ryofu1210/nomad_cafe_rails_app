@@ -3,7 +3,7 @@
     .col-8.offset-2
       = form_with model: @store, local: true do |f|
         .form-group.row
-          = f.label :name, "TENPOMEI", class: "col-form-label col-3", for: "store_name"
+          = f.label :name, "店舗名", class: "col-form-label col-3", for: "store_name"
           = f.text_field :name,placeholder:"店舗名を入力してください。", class: "form-control col-9",id: "store_name"
         .form-group.row
           = f.label :long_stay, "長居しやすさ度", class: "col-form-label col-3",for: "store_long_stay"

@@ -3,8 +3,8 @@
     h1.Title ユーザプロフィール
   .row.User
     .col-2
-      - if @user.image.present?
-        = image_tag @user.image
+      - if @user.image.url.present?
+        = image_tag @user.image.url(:middle), class:"img-thumbnail"
       - else
         img src="/assets/default-user-image.png" class="img-thumbnail"
     .col-10
@@ -15,8 +15,9 @@
           = "No Name"
       .User-Profile
         = @user.profile
-      .User-Edit
-        = link_to "編集", edit_user_registration_path, class:"align-bottom" 
+      - if current_user == @user
+        .User-Edit
+          = link_to "編集", edit_user_registration_path, class:"align-bottom" 
   .row.mt-5
     h2.Title 投稿したカフェ一覧
   .row

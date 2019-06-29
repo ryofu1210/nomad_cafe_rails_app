@@ -6,7 +6,8 @@ class StoresController < ApplicationController
 
   def index
     stores = Store.search(@parameters[:search])
-    stores = stores.favorite(current_user) if @parameters[:type] == "favorite_stores"
+    # stores = stores.favorite(current_user) if @parameters[:type] == "favorite_stores"
+    stores = current_user.favorite_stores.search(@parameters[:search]) if @parameters[:type] == "favorite_stores"
     @stores = stores.page(@parameters[:page]).per(ITEMS_PER_PAGE)
   end
 

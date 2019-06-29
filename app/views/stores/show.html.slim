@@ -3,8 +3,8 @@
     h1.Title.mt-5 カフェ詳細
   .row
     .col-5
-      - if @store.image.present?
-        = image_tag @store.image.middle, class: "img-fluid"
+      - if @store.image.url.present?
+        = image_tag @store.image.url(:middle), class: "img-fluid"
       - else
         img src="/assets/default_image_store.png" class="img-fluid"
     .col-7
@@ -41,3 +41,9 @@
         h4.col-4.Sub-Title お気に入り登録者数
         p.col-8
           = @store.favorites.count
+      .row.mb-1
+        .offset-col-1.col-11
+          - if current_user == @store.user
+            = link_to '編集', edit_store_path(@store)
+            span.mr-1
+            = link_to '削除', store_path(@store), method: :delete

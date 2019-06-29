@@ -1,10 +1,10 @@
 .container
-  .row.mt-5.mb-5.justify-content-between
+  .row.mt-5.mb-5.justify-content-between#MENU
     .col-4
       - if user_signed_in?
         = link_to 'すべて', stores_path(search: @parameters[:search]), class: "btn #{@parameters[:type].nil? ? 'btn-primary': 'btn-secondary'}"
         span.mr-1
-        = link_to 'お気に入り', stores_path(type:"favorite_stores",search: @parameters[:search]), class: "btn #{@parameters[:type] == 'favorite_stores' ? 'btn-primary' : 'btn-secondary'}"
+        = link_to 'お気に入り', stores_path(type:"favorite_stores",search: @parameters[:search]), class: "btn #{@parameters[:type] == 'favorite_stores' ? 'btn-primary' : 'btn-secondary'}", id: "FAVORITE"
     .col-4
       = form_with url: stores_path, method: :get, local: true do |f|
         .input-group.mb-3
