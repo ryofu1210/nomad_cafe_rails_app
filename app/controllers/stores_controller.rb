@@ -2,7 +2,7 @@ class StoresController < ApplicationController
   skip_before_action :authenticate_user!, only:%w(index show)
   before_action :set_parameter, only:%w(index)
   before_action :correct_user, only:%w(edit update destroy)
-  ITEMS_PER_PAGE = 3
+  ITEMS_PER_PAGE = 6
 
   def index
     stores = Store.search(@parameters[:search])
