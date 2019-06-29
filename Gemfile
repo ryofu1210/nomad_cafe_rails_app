@@ -44,7 +44,7 @@ gem 'kaminari'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
-gem 'enum_help' 
+gem 'enum_help'
 gem 'rails-i18n', '~> 5.1'
 
 
@@ -72,6 +72,7 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  # gem 'paperclip'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
