@@ -1,8 +1,8 @@
 .col-4
   .CardBox.shadow
     = link_to store_path(store) do
-      - if store.image.present?
-        = image_tag store.image.middle, {class:"Card-Img"}
+      - if store.image.url.present?
+        = image_tag store.image.url(:middle), {class:"Card-Img"}
       - else
         img src="/assets/default_image_store.png" class="Card-Img"
     .Card-Body

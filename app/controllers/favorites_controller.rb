@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  before_action :correct_user, only: :destroy
+
   def create
     @favorite = current_user.favorites.new(store_id: params[:store_id])
     if @favorite.save
@@ -18,6 +20,12 @@ class FavoritesController < ApplicationController
   end
 
   private
-  def favorite_params
+
+  def correct_user
+    favorite = Favorite.find_by(user_id:params[:id],store_id:params[:store_id])
+    unless favorite.user == current_user
+      flash[:alert] = "権限がありません"
+      redirect_back(fallback_location: root_path)
+    end
   end
 end

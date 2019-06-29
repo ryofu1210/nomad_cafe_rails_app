@@ -1,11 +1,13 @@
 class StoresController < ApplicationController
   skip_before_action :authenticate_user!, only:%w(index show)
   before_action :set_parameter, only:%w(index)
+  before_action :correct_user, only:%w(edit update destroy)
   ITEMS_PER_PAGE = 3
 
   def index
     stores = Store.search(@parameters[:search])
-    stores = stores.favorite(current_user) if @parameters[:type] == "favorite_stores"
+    # stores = stores.favorite(current_user) if @parameters[:type] == "favorite_stores"
+    stores = current_user.favorite_stores.search(@parameters[:search]) if @parameters[:type] == "favorite_stores"
     @stores = stores.page(@parameters[:page]).per(ITEMS_PER_PAGE)
   end
 
@@ -70,6 +72,14 @@ class StoresController < ApplicationController
       :comment,
       :image
     )
+  end
+
+  def correct_user
+    @store = Store.find_by(id:params[:id])
+    unless @store.user == current_user
+      flash[:alert] = "権限がありません"
+      redirect_to root_path
+    end
   end
 
 end

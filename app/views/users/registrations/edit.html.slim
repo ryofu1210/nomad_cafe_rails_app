@@ -3,7 +3,7 @@
     .col-8.offset-2
       / = resource_name.to_s.humanize
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-        / = render "devise/shared/error_messages", resource: resource
+        = render "devise/shared/error_messages", resource: resource
         h2.Title.mb-4 ユーザ情報を変更 
         .form-group.row
           = f.label :email, "メールアドレス",class: "col-form-label col-4"
