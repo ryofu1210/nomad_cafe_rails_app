@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!
-  ITEMS_PER_PAGE = 3
+  ITEMS_PER_PAGE = 6
 
   def show
     @user = User.find(params[:id])
