@@ -47,6 +47,9 @@ gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'enum_help'
 gem 'rails-i18n', '~> 5.1'
+gem 'fog'
+# .env から環境変数を読み込み
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 
 group :development, :test do

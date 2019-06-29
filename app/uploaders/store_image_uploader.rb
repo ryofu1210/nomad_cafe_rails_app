@@ -5,7 +5,13 @@ class StoreImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  if Rails.env.development?
+    storage :fog
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -49,4 +55,7 @@ class StoreImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  def filename
+    original_filename if original_filename
+  end
 end
