@@ -1,5 +1,5 @@
 .col-4
-  .CardBox.shadow
+  .CardBox.shadow.mb-5
     = link_to store_path(store) do
       - if store.image.url.present?
         = image_tag store.image.url(:middle), {class:"Card-Img"}
