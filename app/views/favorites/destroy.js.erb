@@ -1,0 +1,4 @@
+<%# var store_id = <% @favorite.store_id %>;
+<%# debugger; %>
+$("#store-card-favo-<%= @favorite.store_id %> > .Card-Favorite-icon").html("<%= j (render partial:'shared/not_favorite', locals: {store_id: @favorite.store_id}) %>");
+$("#store-card-favo-<%= @favorite.store_id %> > .Card-Favorite-Message").html("<%= favorite_count_message(@favorite.store) %>");
