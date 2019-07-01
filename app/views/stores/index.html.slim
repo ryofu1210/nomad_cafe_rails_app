@@ -1,4 +1,11 @@
 .container
+  / #ajax-box
+  /   #ajax-title
+  /     = @title
+  /   #ajax-form
+  /     = form_with url: title_update_path do |f|
+  /       = f.text_field :title
+  /       = f.submit
   .row.mt-5.mb-5.justify-content-between#MENU
     .col-4
       - if user_signed_in?

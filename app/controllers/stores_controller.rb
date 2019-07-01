@@ -1,5 +1,5 @@
 class StoresController < ApplicationController
-  skip_before_action :authenticate_user!, only:%w(index show)
+  skip_before_action :authenticate_user!, only:%w(index show title_update)
   before_action :set_parameter, only:%w(index)
   before_action :correct_user, only:%w(edit update destroy)
   ITEMS_PER_PAGE = 6
@@ -9,6 +9,11 @@ class StoresController < ApplicationController
     # stores = stores.favorite(current_user) if @parameters[:type] == "favorite_stores"
     stores = current_user.favorite_stores.search(@parameters[:search]) if @parameters[:type] == "favorite_stores"
     @stores = stores.page(@parameters[:page]).per(ITEMS_PER_PAGE)
+  end
+
+  def title_update
+    # debugger
+    @title = params[:title]
   end
 
   def show

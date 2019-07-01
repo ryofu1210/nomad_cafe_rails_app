@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: %w(show), constraints: { id: /[0-9]+/ }
 
+  post '/title_update', to: 'stores#title_update'
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
     passwords:     'users/passwords',

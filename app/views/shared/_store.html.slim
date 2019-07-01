@@ -1,5 +1,5 @@
 .col-4
-  .CardBox.shadow.mb-5
+  .CardBox.shadow.mb-5[id="store-card-#{store.id}"]
     = link_to store_path(store) do
       - if store.image.url.present?
         = image_tag store.image.url(:middle), {class:"Card-Img"}
@@ -18,12 +18,16 @@
       .Card-Text
         p.Card-Text-Title Wifi
         p= store.wifi_i18n
-      .Card-Favorite
-        - if current_user && current_user.already_favorite?(store)
-          = link_to fa_icon("heart"), store_favorite_path(store_id: store.id, id: current_user.id), {method: :delete, class:"fa-red d-inline"}
-        - else
-          = link_to fa_icon("heart"), store_favorites_path(store_id: store.id), {method: :post, class:"fa-fw fa-white d-inline"}
-        span.Card-Favorite-Message= favorite_count_message(store)
+      .Card-Favorite[id="store-card-favo-#{store.id}"]
+        span.Card-Favorite-icon
+          - if current_user && current_user.already_favorite?(store)
+            / = link_to fa_icon("heart"), store_favorite_path(store_id: store.id, id: current_user.id), {method: :delete, class:"fa-red d-inline"}
+            = render partial: 'shared/favorite', locals: {store_id: store.id, user_id: current_user.id}
+          - else
+            / = link_to fa_icon("heart"), store_favorites_path(store_id: store.id), {method: :post, class:"fa-fw fa-white d-inline"}
+            = render partial: 'shared/not_favorite', locals: {store_id: store.id}
+        span.Card-Favorite-Message
+          = favorite_count_message(store)
 
       .Card-User
         = link_to user_path(store.user) do
